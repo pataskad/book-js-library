@@ -25,3 +25,7 @@ My preferred and recommended method to running this project is via the VSCode 'l
 * Git
 * GitHub
 * Google-Fu
+
+# Getting in Touch #
+
+The current best method for reaching out to myself about either this project or anything else is my [LinkedIn](https://linkedin.com/in/dallas-pataska/).
