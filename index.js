@@ -12,6 +12,12 @@ let myLibrary = [
         author: 'G.R.R Martin',
         pages: '1002',
         hasRead: 'No',
+    },
+    { 
+        title: 'Percy Jackson',
+        author: 'Rick Riordan',
+        pages: 340,
+        hasRead: 'Yes',
     }
 ]
 

@@ -5,11 +5,19 @@ body, html {
     text-align: center;
     background-color: aliceblue;
 }
-h1 {
-    color: rgba(0, 0, 0, 0.89);
+header {
+    height: 70px;
+    margin: 0px 0px 20px 0px;
+    padding: 0;
+    background-color: skyblue;
+}
+header > h1 {
+    color:rgba(0, 0, 0, 0.89);
+    margin: 0;
+    padding: 17px;
 }
 .card {
-    box-shadow: 0 3px 12px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 12px 4px rgba(0,0,0,0.2);
     border-radius: 15px;
     transition: 0.3s;
     background-color: palevioletred;
@@ -20,7 +28,7 @@ h1 {
     padding: 10px;
 }
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 12px 4px rgba(0,0,0,0.4);
 }
 .card > h4 {
     color: rgba(0, 0, 0, 0.89);
@@ -31,4 +39,22 @@ h1 {
     color: lime;
     margin: 0;
     padding: 0;
+    font-size: larger;
+}
+footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    position: fixed;
+    background-color: skyblue;
+    color: rgba(0, 0, 0, 0.89);
+}
+footer > h1 > a {
+    text-decoration: none;
+    color: palevioletred;
+}
+footer > h1 > a:hover {
+    color: rgba(0, 0, 0, 0.89);
+    text-decoration: underline;
 }
