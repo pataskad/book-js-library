@@ -23,17 +23,27 @@ let myLibrary = [
 
 const container = document.querySelector('.container')
 
-function Book() { // constructor, need params?
+function Book(title, author, pages, hasRead) { // object constructor
     this.title = title
     this.author = author
     this.pages = pages
-    hasRead = 'No';
+    this.hasRead = hasRead;
 }
 
+/* Book.prototype.hasRead = function() {
+    if (hasRead === false) {
+        return 'No'
+    } else {
+        return 'Yes'
+    }
+} */
+
 function addBookToLibrary() {
-    const book = new Book()
-    myLibary.push(book)
-    console.log(book.title, book.author, book.pages, hasRead)
+    let newBook = new Book()
+    myLibrary.push(newBook)
+
+    // add user inputted values to myLibrary array as new book objects
+    // once new book has been created, must start the loop again to view newly added book
 }
 
 for (let i = 0; i < myLibrary.length; i++) {
