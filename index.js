@@ -25,6 +25,9 @@ const container = document.querySelector('.container')
 
 loopThroughLibrary()
 
+// add button here that opens a modal with form for adding new books
+// (if) library/display is empty, change view? (add button location) via two separate classes
+
 function Book(title, author, pages, hasRead) { // object constructor
     this.title = title
     this.author = author
