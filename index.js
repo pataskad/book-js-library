@@ -23,6 +23,8 @@ let myLibrary = [
 
 const container = document.querySelector('.container')
 
+loopThroughLibrary()
+
 function Book(title, author, pages, hasRead) { // object constructor
     this.title = title
     this.author = author
@@ -38,20 +40,29 @@ function Book(title, author, pages, hasRead) { // object constructor
     }
 } */
 
-function addBookToLibrary() {
-    let newBook = new Book()
-    myLibrary.push(newBook)
+function addBookToLibrary(title, author, pages, hasRead) {
+    // assign user inputted values through modal form submission and create new book objects
+    // add newly created book object to library array and add to loop
+    let book = new Book(title, author, pages, hasRead)
+    myLibrary.push(book)
+    loopThroughLibrary()
 
-    // add user inputted values to myLibrary array as new book objects
-    // once new book has been created, must start the loop again to view newly added book
+    return book
 }
-
-for (let i = 0; i < myLibrary.length; i++) {
-    const card = document.createElement('div')
-    card.classList.add('card')
-    container.appendChild(card)
-    card.innerHTML += '<h4>Title:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].title}</p>` 
-          + '<br>' + '<h4>Author:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].author}</p>`
-          + '<br>' + '<h4>Page Count:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].pages}</p>`
-          + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
+function clearDisplay() {
+    while (container.firstChild) {
+        container.removeChild(container.lastChild)
+    }
+}
+function loopThroughLibrary() {
+    clearDisplay()
+    for (let i = 0; i < myLibrary.length; i++) {
+        const card = document.createElement('div')
+        card.classList.add('card')
+        container.appendChild(card)
+        card.innerHTML = '<h4>Title:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].title}</p>` 
+              + '<br>' + '<h4>Author:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].author}</p>`
+              + '<br>' + '<h4>Page Count:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].pages}</p>`
+              + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
+    } 
 }
