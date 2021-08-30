@@ -22,11 +22,11 @@ let myLibrary = [
 ]
 
 const container = document.querySelector('.container')
+const main = document.querySelector('main')
+const modal = document.querySelector('.modal')
+const modalCloseBtn = document.querySelector('.close-button')[0]
 
 loopThroughLibrary()
-
-// add button here that opens a modal with form for adding new books
-// (if) library/display is empty, change view? (add button location) via two separate classes
 
 function Book(title, author, pages, hasRead) { // object constructor
     this.title = title
@@ -52,11 +52,6 @@ function addBookToLibrary(title, author, pages, hasRead) {
 
     return book
 }
-function clearDisplay() {
-    while (container.firstChild) {
-        container.removeChild(container.lastChild)
-    }
-}
 function loopThroughLibrary() {
     clearDisplay()
     for (let i = 0; i < myLibrary.length; i++) {
@@ -68,4 +63,24 @@ function loopThroughLibrary() {
               + '<br>' + '<h4>Page Count:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].pages}</p>`
               + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
     } 
+}
+modalCloseBtn.onclick = function() {
+    inputCancel()
+}
+window.onclick = function(e) {
+    if (e.target == modal) {
+        inputCancel()
+    }
+}
+function clearDisplay() {
+    while (container.firstChild) {
+        container.removeChild(container.lastChild)
+    }
+}
+function removeBlur() {
+    main.classList.remove('blur')
+}
+function inputCancel() {
+    modal.style.display = 'none'
+    removeBlur()
 }
