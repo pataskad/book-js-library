@@ -31,7 +31,7 @@ const modalCloseBtn = document.getElementsByClassName('close-button')[0]
 const addBookBtn = document.querySelector('#add-book-button')
 addBookBtn.addEventListener('click', () => {
     modal.style.display = 'block'
-    main.classList.add('blur')
+    main.classList.add('blur-background')
 })
 modalCloseBtn.onclick = function() {
     inputCancel()
@@ -84,7 +84,7 @@ function clearDisplay() {
     }
 }
 function removeBlur() {
-    main.classList.remove('blur')
+    main.classList.remove('blur-background')
 }
 function inputCancel() {
     modal.style.display = 'none'

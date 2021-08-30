@@ -9,18 +9,30 @@
         <script src="index.js" defer></script>
     </head>
     <body>
+        <!--Modal display/dynamic elements-->
+        <div id="input-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>Add A New Book</h3>
+                <form action="#" id="add-book-form">
+                    <label class="form-labels" for="book-title">Title:</label>
+                    <input class="form-control" type="text" name="book-title" id="book-title" placeholder="Enter A Title">
+                    <label class="form-labels" for="book-author">Author:</label>
+                    <input class="form-control" type="text" name="book-author" id="book-author" placeholder="Enter the Author">
+                    <label class="form-labels" for="book-pages">Pages:</label>
+                    <input class="form-control" type="number" name="book-pages" id="book-pages" placeholder="Enter the Page Count">
+                    <!--hasRead toggle yes/no-->
+                    <label class="form-labels-checkbox-title" for="hasRead">Have you read this book before?</label>
+                    <label class="form-labels-checkbox" for="hasRead">Yes<input class="form-control-checkbox" type="checkbox" name="hasRead" id="hasRead" value="Yes"></label>
+                </form>
+            </div>
+        </div>
+        <!--Base display-->
         <main>
             <header>
                 <h1>My Book Library</h1>
                 <button id="add-book-button">+</button>
             </header>
-    
-            <!--Modal display-->
-            <div id="input-modal" class="modal">
-                <div class="modal-content">
-                    <span class="close-button">&times;</span>
-                </div>
-            </div>
     
             <div class="container"></div>
     
