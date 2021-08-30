@@ -1,4 +1,4 @@
-# JavaScript Library #
+# JavaScript Book Library #
 
 [Live Demo coming soon](#)
 

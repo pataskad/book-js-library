@@ -23,10 +23,24 @@ let myLibrary = [
 
 const container = document.querySelector('.container')
 const main = document.querySelector('main')
-const modal = document.querySelector('.modal')
-const modalCloseBtn = document.querySelector('.close-button')[0]
+const modal = document.getElementById('input-modal')
 
 loopThroughLibrary()
+
+const modalCloseBtn = document.getElementsByClassName('close-button')[0]
+const addBookBtn = document.querySelector('#add-book-button')
+addBookBtn.addEventListener('click', () => {
+    modal.style.display = 'block'
+    main.classList.add('blur')
+})
+modalCloseBtn.onclick = function() {
+    inputCancel()
+}
+window.onclick = function(e) {
+    if (e.target == modal) {
+        inputCancel()
+    }
+}
 
 function Book(title, author, pages, hasRead) { // object constructor
     this.title = title
@@ -63,14 +77,6 @@ function loopThroughLibrary() {
               + '<br>' + '<h4>Page Count:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].pages}</p>`
               + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
     } 
-}
-modalCloseBtn.onclick = function() {
-    inputCancel()
-}
-window.onclick = function(e) {
-    if (e.target == modal) {
-        inputCancel()
-    }
 }
 function clearDisplay() {
     while (container.firstChild) {
