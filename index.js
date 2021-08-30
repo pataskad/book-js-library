@@ -21,6 +21,10 @@ let myLibrary = [
     }
 ]
 
+// 'back to top' bottom when scrolled down
+// fixed header to allow continous access to 'add book' button without scrolling
+// form validations and javascript functionality
+
 const container = document.querySelector('.container')
 const main = document.querySelector('main')
 const modal = document.getElementById('input-modal')
