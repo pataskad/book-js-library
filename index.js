@@ -69,6 +69,7 @@ function Book(title, author, pages, hasRead) { // object constructor
 } */
 
 function addBookToLibrary(title, author, pages, hasRead) {
+    // validate and/or require user input parameters!!
     // assign user inputted values through modal form submission and create new book objects
     // add newly created book object to library array and add to loop
     let book = new Book(title, author, pages, hasRead)
@@ -76,18 +77,6 @@ function addBookToLibrary(title, author, pages, hasRead) {
     loopThroughLibrary()
 
     return book
-}
-function loopThroughLibrary() {
-    clearDisplay()
-    for (let i = 0; i < myLibrary.length; i++) {
-        const card = document.createElement('div')
-        card.classList.add('card')
-        container.appendChild(card)
-        card.innerHTML = '<h4>Title:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].title}</p>` 
-              + '<br>' + '<h4>Author:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].author}</p>`
-              + '<br>' + '<h4>Page Count:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].pages}</p>`
-              + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
-    } 
 }
 function clearDisplay() {
     while (container.firstChild) {
@@ -100,4 +89,16 @@ function removeBlur() {
 function inputCancel() {
     modal.style.display = 'none'
     removeBlur()
+}
+function loopThroughLibrary() {
+    clearDisplay()
+    for (let i = 0; i < myLibrary.length; i++) {
+        const card = document.createElement('div')
+        card.classList.add('card')
+        container.appendChild(card)
+        card.innerHTML = '<h4>Title:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].title}</p>` 
+              + '<br>' + '<h4>Author:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].author}</p>`
+              + '<br>' + '<h4>Page Count:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].pages}</p>`
+              + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
+    } 
 }
