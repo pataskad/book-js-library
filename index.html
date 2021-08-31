@@ -20,10 +20,11 @@
                     <label class="form-labels" for="book-author">Author:</label>
                     <input class="form-control" type="text" name="book-author" id="book-author" placeholder="Enter the Author">
                     <label class="form-labels" for="book-pages">Pages:</label>
-                    <input class="form-control" type="number" name="book-pages" id="book-pages" placeholder="Enter the Page Count">
+                    <input class="form-control" type="number" min="1" name="book-pages" id="book-pages" placeholder="Enter the Page Count">
                     <!--hasRead toggle yes/no-->
                     <label class="form-labels-checkbox-title" for="hasRead">Have you read this book before?</label>
                     <label class="form-labels-checkbox" for="hasRead">Yes<input class="form-control-checkbox" type="checkbox" name="hasRead" id="hasRead" value="Yes"></label>
+                    <input type="submit" id="form-submit-btn" value="Add to My Collection">
                 </form>
             </div>
         </div>

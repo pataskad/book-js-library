@@ -24,6 +24,7 @@ let myLibrary = [
 // 'back to top' bottom when scrolled down
 // fixed header to allow continous access to 'add book' button without scrolling
 // form validations and javascript functionality
+// data-attribute??? Data-attribute = book object index placement
 
 const container = document.querySelector('.container')
 const main = document.querySelector('main')
@@ -36,6 +37,12 @@ const addBookBtn = document.querySelector('#add-book-button')
 addBookBtn.addEventListener('click', () => {
     modal.style.display = 'block'
     main.classList.add('blur-background')
+})
+addBookBtn.addEventListener('mouseover', () => {
+    addBookBtn.textContent = 'New'
+})
+addBookBtn.addEventListener('mouseout', () => {
+    addBookBtn.textContent = '+'
 })
 modalCloseBtn.onclick = function() {
     inputCancel()

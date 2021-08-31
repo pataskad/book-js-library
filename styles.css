@@ -3,7 +3,7 @@ body, html, main {
     padding: 0;
     height: 100%;
     text-align: center;
-    background-color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.30);
 }
 header {
     height: 70px;
@@ -12,7 +12,7 @@ header {
     display: flex;
     place-content: center;
     align-items: center;
-    background-color: skyblue;
+    background-color: royalblue;
 }
 header > h1 {
     color:rgba(0, 0, 0, 0.89);
@@ -21,21 +21,21 @@ header > h1 {
     padding: 17px;
 }
 #add-book-button {
-    color: gray;
+    color: rgba(0, 0, 0, 0.78);
     font-size: x-large;
     background-color: lightgreen;
-    border: 1px solid gray;
+    border: 1px solid rgba(0, 0, 0, 0.78);
     border-radius: 5px;
     height: 55%;
-    width: 4%;
+    width: 8%;
     margin-left: auto;
     margin-right: 20px;
     cursor: pointer;
 }
 #add-book-button:hover {
-    color: whitesmoke;
-    border: 1px solid rgb(75, 46, 46);
-    background-color: green;
+    color: rgba(0, 0, 0, 0.78);
+    font-size: large;
+    border: 1px solid rgba(0, 0, 0, 0.78);
 }
 .container {
     padding-bottom: 100px;
@@ -44,7 +44,7 @@ header > h1 {
     box-shadow: 0 2px 12px 4px rgba(0,0,0,0.2);
     border-radius: 15px;
     transition: 0.3s;
-    background-color: palevioletred;
+    background-color: lightgray;
     width: 25%;
     min-width: 20%;
     display: inline-grid;
@@ -60,7 +60,7 @@ header > h1 {
     padding: 0;
 }
 .card > p {
-    color: lime;
+    color: rgb(125, 3, 2);
     margin: 0;
     padding: 0;
     font-size: larger;
@@ -80,6 +80,9 @@ header > h1 {
     height: 48%;
     background-color: ghostwhite;
     border-radius: 15px;
+}
+.modal-content > h3 {
+    color: rgb(23 20 20);
 }
 .close-button {
     color: rgb(75, 46, 46);
@@ -105,14 +108,25 @@ header > h1 {
     float: left;
     margin: 5px 0px 5px 0px;
     font-weight: bold;
+    color: rgb(23 20 20);
 }
 .form-control {
-    width: 97%;
+    width: 95%;
     float: left;
+    padding: 3px 3px 3px 8px;
+    height: 20px;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+}
+.form-control:focus-visible {
+    outline: none;
+    box-shadow: 0px 0px 3px 2px lightskyblue;
+    border: 1px solid transparent;
 }
 .form-labels-checkbox-title {
     margin: 30px 0px 5px 0px;
     float: left;
+    color: rgb(23 20 20);
     font-weight: bold;
 }
 .form-labels-checkbox {
@@ -123,20 +137,36 @@ header > h1 {
     vertical-align: text-top;
     margin-left: 10px;
 }
+#form-submit-btn {
+    width: 50%;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    background-color: white;
+    padding: 7px 0px 20px 0px;
+    margin: 10px;
+}
+#form-submit-btn:hover {
+    box-shadow: 0px 0px 3px 2px lightskyblue;
+}
+#form-submit-btn:active {
+    transform: translateY(1px);
+}
 footer {
     bottom: 0;
     left: 0;
     right: 0;
     height: 70px;
     position: fixed;
-    background-color: skyblue;
+    background-color: royalblue;
     color: rgba(0, 0, 0, 0.89);
 }
 footer > h1 > a {
     text-decoration: none;
-    color: palevioletred;
+    color: rgb(78, 0, 0);
 }
 footer > h1 > a:hover {
-    color: rgba(0, 0, 0, 0.89);
+    color: rgb(78, 0, 0);
     text-decoration: underline;
 }
