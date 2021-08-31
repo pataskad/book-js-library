@@ -14,18 +14,19 @@
             <div class="modal-content">
                 <span class="close-button">&times;</span>
                 <h3>Add A New Book</h3>
+                <!-- <div id="form-entry-error"></div> -->
                 <form action="#" id="add-book-form">
-                    <label class="form-labels" for="book-title">Title:</label>
+                    <label class="form-labels" for="book-title">*Title:</label>
                     <input class="form-control" type="text" name="book-title" id="book-title" placeholder="Enter A Title">
-                    <label class="form-labels" for="book-author">Author:</label>
+                    <label class="form-labels" for="book-author">*Author:</label>
                     <input class="form-control" type="text" name="book-author" id="book-author" placeholder="Enter the Author">
-                    <label class="form-labels" for="book-pages">Pages:</label>
+                    <label class="form-labels" for="book-pages">*Pages:</label>
                     <input class="form-control" type="number" min="1" name="book-pages" id="book-pages" placeholder="Enter the Page Count">
                     <!--hasRead toggle yes/no-->
                     <label class="form-labels-checkbox-title" for="hasRead">Have you read this book before?</label>
-                    <label class="form-labels-checkbox" for="hasRead">Yes<input class="form-control-checkbox" type="checkbox" name="hasRead" id="hasRead" value="Yes"></label>
-                    <input type="submit" id="form-submit-btn" value="Add to My Collection">
+                    <label class="form-labels-checkbox" for="hasRead">Yes<input class="form-control-checkbox" type="checkbox" name="hasRead" id="hasRead"></label>
                 </form>
+                <input type="submit" id="form-submit-btn" value="Add to My Collection">
             </div>
         </div>
         <!--Base display-->

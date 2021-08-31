@@ -29,11 +29,19 @@ let myLibrary = [
 const container = document.querySelector('.container')
 const main = document.querySelector('main')
 const modal = document.getElementById('input-modal')
+// form input nodes
+const bookTitleInput = document.querySelector('#book-title')
+const bookAuthorInput = document.querySelector('#book-author') 
+const bookPagesInput = document.querySelector('#book-pages')
+const bookHasReadCheckbox = document.querySelector('#hasRead')
+const formSubmitBtn = document.querySelector('#form-submit-btn')
+const formErrorOutput = document.querySelector('#form-entry-error')
 
 loopThroughLibrary()
 
 const modalCloseBtn = document.getElementsByClassName('close-button')[0]
 const addBookBtn = document.querySelector('#add-book-button')
+// event listeners
 addBookBtn.addEventListener('click', () => {
     modal.style.display = 'block'
     main.classList.add('blur-background')
@@ -44,6 +52,7 @@ addBookBtn.addEventListener('mouseover', () => {
 addBookBtn.addEventListener('mouseout', () => {
     addBookBtn.textContent = '+'
 })
+formSubmitBtn.addEventListener('click', addBookToLibrary)
 modalCloseBtn.onclick = function() {
     inputCancel()
 }
@@ -53,7 +62,7 @@ window.onclick = function(e) {
     }
 }
 
-function Book(title, author, pages, hasRead) { // object constructor
+function Book(title, author, pages, hasRead) { // book object constructor
     this.title = title
     this.author = author
     this.pages = pages
@@ -69,26 +78,54 @@ function Book(title, author, pages, hasRead) { // object constructor
 } */
 
 function addBookToLibrary(title, author, pages, hasRead) {
-    // validate and/or require user input parameters!!
-    // assign user inputted values through modal form submission and create new book objects
-    // add newly created book object to library array and add to loop
-    let book = new Book(title, author, pages, hasRead)
-    myLibrary.push(book)
-    loopThroughLibrary()
+    if (validateFormInput() == true) {
+        title = bookTitleInput.value
+        author = bookAuthorInput.value
+        pages = bookPagesInput.value
+        hasRead = (bookHasReadCheckbox.checked == true) ? 'Yes' : 'No'
 
-    return book
+        const book = new Book(title, author, pages, hasRead)
+        myLibrary.push(book)
+        clearFormInputs() 
+        loopThroughLibrary()
+        removeBlurAndModal()
+        return book
+    }
+}
+function validateFormInput() {
+    if (bookTitleInput.value === '') {
+        alert('Please fill out the title field')
+        bookTitleInput.focus()
+        return false
+    }  else if (bookAuthorInput.value === '') {
+        alert('Please fill out the author field')
+        bookAuthorInput.focus()
+        return false
+    }  else if (bookPagesInput.value === '') {
+        alert('Please enter a page count')
+        bookPagesInput.focus()
+        return false
+    }
+    return true
 }
 function clearDisplay() {
     while (container.firstChild) {
         container.removeChild(container.lastChild)
     }
 }
-function removeBlur() {
+function removeBlurAndModal() {
     main.classList.remove('blur-background')
+    modal.style.display = 'none'
+}
+function clearFormInputs() {
+    bookTitleInput.value = ''
+    bookAuthorInput.value = ''
+    bookPagesInput.value = ''
+    bookHasReadCheckbox.checked = false
 }
 function inputCancel() {
-    modal.style.display = 'none'
-    removeBlur()
+    removeBlurAndModal()
+    clearFormInputs()
 }
 function loopThroughLibrary() {
     clearDisplay()
