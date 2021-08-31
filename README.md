@@ -1,6 +1,6 @@
 # JavaScript Book Library #
 
-[Live Demo coming soon](#)
+[Live Demo](https://pataskad.github.io/book-js-library/)
 
 The 'JavaScript Library' is a project where the goal is to manage a library of books through the use of constructors, objects, and prototypes to allow for great efficiency in order to be able to scale this approach up to a professional level working with professional, business level applications.  This project will allow a user to browse through their current repository of books and add or remove books as desired.  Additionally, they will also be able to toggle the read status of each book.
 
