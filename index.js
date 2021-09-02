@@ -137,5 +137,12 @@ function loopThroughLibrary() {
               + '<br>' + '<h4>Author:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].author}</p>`
               + '<br>' + '<h4>Page Count:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].pages}</p>`
               + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
+        const deleteBtnDiv = document.createElement('div')
+        const removeBookBtn = document.createElement('button')
+        deleteBtnDiv.classList.add('delete-btn-div')
+        removeBookBtn.textContent = 'Delete'
+        removeBookBtn.classList.add('remove-book-btn')
+        deleteBtnDiv.appendChild(removeBookBtn)
+        card.appendChild(deleteBtnDiv)
     } 
 }
