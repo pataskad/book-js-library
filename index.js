@@ -20,10 +20,7 @@ let myLibrary = [
         hasRead: 'Yes',
     }
 ]
-
-// 'back to top' bottom when scrolled down
 // fixed header to allow continous access to 'add book' button without scrolling
-// form validations and javascript functionality
 // data-attribute??? Data-attribute = book object index placement
 
 const container = document.querySelector('.container')
@@ -108,6 +105,9 @@ function validateFormInput() {
     }
     return true
 }
+function deleteBook() {
+    const bookToDelete = document.getAttribute('remove-book-btn')
+}
 function clearDisplay() {
     while (container.firstChild) {
         container.removeChild(container.lastChild)
@@ -132,17 +132,15 @@ function loopThroughLibrary() {
     for (let i = 0; i < myLibrary.length; i++) {
         const card = document.createElement('div')
         card.classList.add('card')
+        card.dataset.attribute = `${myLibrary.indexOf(myLibrary[i])}`
         container.appendChild(card)
         card.innerHTML = '<h4>Title:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].title}</p>` 
               + '<br>' + '<h4>Author:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].author}</p>`
               + '<br>' + '<h4>Page Count:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].pages}</p>`
               + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
-        const deleteBtnDiv = document.createElement('div')
-        const removeBookBtn = document.createElement('button')
-        deleteBtnDiv.classList.add('delete-btn-div')
-        removeBookBtn.textContent = 'Delete'
-        removeBookBtn.classList.add('remove-book-btn')
-        deleteBtnDiv.appendChild(removeBookBtn)
-        card.appendChild(deleteBtnDiv)
+        const removeBookBtnDiv = document.createElement('div')
+        removeBookBtnDiv.classList.add('remove-bookBtn-div')
+        removeBookBtnDiv.innerHTML = '<button class="remove-book-btn">Delete</button>'
+        card.appendChild(removeBookBtnDiv)
     } 
 }
