@@ -21,7 +21,6 @@ let myLibrary = [
     }
 ]
 // fixed header to allow continous access to 'add book' button without scrolling
-// data-attribute??? Data-attribute = book object index placement
 
 const container = document.querySelector('.container')
 const main = document.querySelector('main')
@@ -106,7 +105,8 @@ function validateFormInput() {
     return true
 }
 function deleteBook() {
-    const bookToDelete = document.getAttribute('remove-book-btn')
+    // delete book object at index selected (need if/else?)
+    console.log('This function and listener are working!')
 }
 function clearDisplay() {
     while (container.firstChild) {
