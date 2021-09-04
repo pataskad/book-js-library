@@ -20,6 +20,7 @@ let myLibrary = [
         hasRead: 'Yes',
     }
 ]
+
 // fixed header to allow continous access to 'add book' button without scrolling
 
 const container = document.querySelector('.container')
@@ -30,33 +31,38 @@ const bookTitleInput = document.querySelector('#book-title')
 const bookAuthorInput = document.querySelector('#book-author') 
 const bookPagesInput = document.querySelector('#book-pages')
 const bookHasReadCheckbox = document.querySelector('#hasRead')
-const formSubmitBtn = document.querySelector('#form-submit-btn')
-const formErrorOutput = document.querySelector('#form-entry-error')
+const addBookBtn = document.querySelector('#add-book-button')
 
 loopThroughLibrary()
 
-const modalCloseBtn = document.getElementsByClassName('close-button')[0]
-const addBookBtn = document.querySelector('#add-book-button')
-// event listeners
-addBookBtn.addEventListener('click', () => {
-    modal.style.display = 'block'
-    main.classList.add('blur-background')
+document.addEventListener('click', (e) => {
+    if (e.target.matches('#add-book-button')) {
+        modal.style.display = 'block'
+        main.classList.add('blur-background')
+    }
 })
-addBookBtn.addEventListener('mouseover', () => {
-    addBookBtn.textContent = 'New'
+document.addEventListener('mouseover', (e) => {
+    if (e.target.matches('#add-book-button')) {
+        addBookBtn.textContent = 'New'
+    } else {
+        addBookBtn.textContent = '+'
+    }
 })
-addBookBtn.addEventListener('mouseout', () => {
-    addBookBtn.textContent = '+'
+document.addEventListener('click', (e) => {
+    if (e.target.matches('#form-submit-btn')) {
+        addBookToLibrary()
+    }
 })
-formSubmitBtn.addEventListener('click', addBookToLibrary)
-modalCloseBtn.onclick = function() {
-    inputCancel()
-}
-window.onclick = function(e) {
+document.addEventListener('click', (e) => {
+    if (e.target.matches('.close-button')) {
+        inputCancel()
+    }
+})
+window.addEventListener('click', (e) => {
     if (e.target == modal) {
         inputCancel()
     }
-}
+})
 
 function Book(title, author, pages, hasRead) { // book object constructor
     this.title = title
