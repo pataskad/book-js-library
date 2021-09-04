@@ -49,6 +49,15 @@ document.addEventListener('mouseover', (e) => {
     }
 })
 document.addEventListener('click', (e) => {
+    if (e.target.matches('.remove-book-btn')) {
+        let div = document.querySelector('.card')
+        const bookIndex = [...div.parentElement.children].indexOf(div)
+        console.log(bookIndex)
+        myLibrary.splice(bookIndex, 1)
+        loopThroughLibrary()
+    }
+})
+document.addEventListener('click', (e) => {
     if (e.target.matches('#form-submit-btn')) {
         addBookToLibrary()
     }
@@ -147,6 +156,7 @@ function loopThroughLibrary() {
         const removeBookBtnDiv = document.createElement('div')
         removeBookBtnDiv.classList.add('remove-bookBtn-div')
         removeBookBtnDiv.innerHTML = '<button class="remove-book-btn">Delete</button>'
+        const deleteBtn = document.createElement('button')
         card.appendChild(removeBookBtnDiv)
     } 
 }
