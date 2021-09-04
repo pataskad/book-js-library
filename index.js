@@ -23,8 +23,6 @@ let myLibrary = [
     }
 ]
 
-// fixed header to allow continous access to 'add book' button without scrolling
-
 const container = document.querySelector('.container')
 const main = document.querySelector('main')
 const modal = document.getElementById('input-modal')
@@ -52,10 +50,7 @@ document.addEventListener('mouseover', (e) => {
 })
 document.addEventListener('click', (e) => {
     if (e.target.matches('.remove-book-btn')) {
-        let bookIndex = e.target.id
-        myLibrary.splice(bookIndex, 1)
-        console.log(e.target.id)
-        loopThroughLibrary()
+        deleteBook(e)
     }
 })
 document.addEventListener('click', (e) => {
@@ -121,9 +116,10 @@ function validateFormInput() {
     }
     return true
 }
-function deleteBook() {
-    // delete book object at index selected (need if/else?)
-    console.log('This function and listener are working!')
+function deleteBook(e) {
+    let bookIndex = e.target.id
+    myLibrary.splice(bookIndex, 1)
+    loopThroughLibrary()
 }
 function clearDisplay() {
     while (container.firstChild) {
@@ -157,8 +153,8 @@ function loopThroughLibrary() {
               + '<br>' + '<h4>Page Count:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].pages}</p>`
               + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
         const removeBookBtnDiv = document.createElement('div')
-        removeBookBtnDiv.classList.add('remove-bookBtn-div')
         const deleteBtn = document.createElement('button')
+        removeBookBtnDiv.classList.add('remove-bookBtn-div')
         deleteBtn.classList.add('remove-book-btn')
         deleteBtn.id = `${myLibrary.indexOf(myLibrary[i])}`
         deleteBtn.textContent = 'Delete'
