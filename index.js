@@ -2,18 +2,20 @@
 
 let myLibrary = [
     {
+        id: 1,
         title: 'Harry Potter',
         author: 'J.K. Rowling',
         pages: '560',
         hasRead: 'No',
     },
     {
+        id: 2,
         title: 'Game of Thrones',
         author: 'G.R.R Martin',
         pages: '1002',
         hasRead: 'No',
     },
-    { 
+    {   id: 3,
         title: 'Percy Jackson',
         author: 'Rick Riordan',
         pages: 340,
@@ -50,10 +52,9 @@ document.addEventListener('mouseover', (e) => {
 })
 document.addEventListener('click', (e) => {
     if (e.target.matches('.remove-book-btn')) {
-        let div = document.querySelector('.card')
-        const bookIndex = [...div.parentElement.children].indexOf(div)
-        console.log(bookIndex)
+        let bookIndex = e.target.id
         myLibrary.splice(bookIndex, 1)
+        console.log(e.target.id)
         loopThroughLibrary()
     }
 })
@@ -74,6 +75,7 @@ window.addEventListener('click', (e) => {
 })
 
 function Book(title, author, pages, hasRead) { // book object constructor
+    this.id = myLibrary.length + 1
     this.title = title
     this.author = author
     this.pages = pages
@@ -147,6 +149,7 @@ function loopThroughLibrary() {
     for (let i = 0; i < myLibrary.length; i++) {
         const card = document.createElement('div')
         card.classList.add('card')
+        card.id = `${myLibrary.indexOf(myLibrary[i])}`
         card.dataset.attribute = `${myLibrary.indexOf(myLibrary[i])}`
         container.appendChild(card)
         card.innerHTML = '<h4>Title:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].title}</p>` 
@@ -155,8 +158,11 @@ function loopThroughLibrary() {
               + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
         const removeBookBtnDiv = document.createElement('div')
         removeBookBtnDiv.classList.add('remove-bookBtn-div')
-        removeBookBtnDiv.innerHTML = '<button class="remove-book-btn">Delete</button>'
         const deleteBtn = document.createElement('button')
+        deleteBtn.classList.add('remove-book-btn')
+        deleteBtn.id = `${myLibrary.indexOf(myLibrary[i])}`
+        deleteBtn.textContent = 'Delete'
+        removeBookBtnDiv.appendChild(deleteBtn)
         card.appendChild(removeBookBtnDiv)
     } 
 }
