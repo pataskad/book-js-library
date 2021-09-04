@@ -2,26 +2,26 @@
 
 let myLibrary = [
     {
+        id: 1,
         title: 'Harry Potter',
         author: 'J.K. Rowling',
         pages: '560',
         hasRead: 'No',
     },
     {
+        id: 2,
         title: 'Game of Thrones',
         author: 'G.R.R Martin',
         pages: '1002',
         hasRead: 'No',
     },
-    { 
+    {   id: 3,
         title: 'Percy Jackson',
         author: 'Rick Riordan',
         pages: 340,
         hasRead: 'Yes',
     }
 ]
-
-// fixed header to allow continous access to 'add book' button without scrolling
 
 const container = document.querySelector('.container')
 const main = document.querySelector('main')
@@ -49,6 +49,11 @@ document.addEventListener('mouseover', (e) => {
     }
 })
 document.addEventListener('click', (e) => {
+    if (e.target.matches('.remove-book-btn')) {
+        deleteBook(e)
+    }
+})
+document.addEventListener('click', (e) => {
     if (e.target.matches('#form-submit-btn')) {
         addBookToLibrary()
     }
@@ -65,6 +70,7 @@ window.addEventListener('click', (e) => {
 })
 
 function Book(title, author, pages, hasRead) { // book object constructor
+    this.id = myLibrary.length + 1
     this.title = title
     this.author = author
     this.pages = pages
@@ -110,9 +116,10 @@ function validateFormInput() {
     }
     return true
 }
-function deleteBook() {
-    // delete book object at index selected (need if/else?)
-    console.log('This function and listener are working!')
+function deleteBook(e) {
+    let bookIndex = e.target.id
+    myLibrary.splice(bookIndex, 1)
+    loopThroughLibrary()
 }
 function clearDisplay() {
     while (container.firstChild) {
@@ -138,6 +145,7 @@ function loopThroughLibrary() {
     for (let i = 0; i < myLibrary.length; i++) {
         const card = document.createElement('div')
         card.classList.add('card')
+        card.id = `${myLibrary.indexOf(myLibrary[i])}`
         card.dataset.attribute = `${myLibrary.indexOf(myLibrary[i])}`
         container.appendChild(card)
         card.innerHTML = '<h4>Title:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].title}</p>` 
@@ -145,8 +153,12 @@ function loopThroughLibrary() {
               + '<br>' + '<h4>Page Count:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].pages}</p>`
               + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
         const removeBookBtnDiv = document.createElement('div')
+        const deleteBtn = document.createElement('button')
         removeBookBtnDiv.classList.add('remove-bookBtn-div')
-        removeBookBtnDiv.innerHTML = '<button class="remove-book-btn">Delete</button>'
+        deleteBtn.classList.add('remove-book-btn')
+        deleteBtn.id = `${myLibrary.indexOf(myLibrary[i])}`
+        deleteBtn.textContent = 'Delete'
+        removeBookBtnDiv.appendChild(deleteBtn)
         card.appendChild(removeBookBtnDiv)
     } 
 }
