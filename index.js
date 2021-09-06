@@ -5,14 +5,14 @@ let myLibrary = [
         id: 1,
         title: 'Harry Potter',
         author: 'J.K. Rowling',
-        pages: '560',
+        pages: 560,
         hasRead: 'No',
     },
     {
         id: 2,
         title: 'Game of Thrones',
         author: 'G.R.R Martin',
-        pages: '1002',
+        pages: 1002,
         hasRead: 'No',
     },
     {   id: 3,
@@ -21,7 +21,7 @@ let myLibrary = [
         pages: 340,
         hasRead: 'Yes',
     }
-]
+] // clear library object placeholders before submitting project code
 
 const container = document.querySelector('.container')
 const main = document.querySelector('main')
@@ -70,10 +70,10 @@ window.addEventListener('click', (e) => {
 })
 
 function Book(title, author, pages, hasRead) { // book object constructor
-    this.id = myLibrary.length + 1
+    this.id = myLibrary.length + 1 // doesn't work properly when adding new books after deleting other books
     this.title = title
     this.author = author
-    this.pages = pages
+    this.pages = +(pages)
     this.hasRead = hasRead;
 }
 
@@ -117,7 +117,7 @@ function validateFormInput() {
     return true
 }
 function deleteBook(e) {
-    let bookIndex = e.target.id
+    let bookIndex = e.target.dataset.attribute
     myLibrary.splice(bookIndex, 1)
     loopThroughLibrary()
 }
@@ -145,8 +145,6 @@ function loopThroughLibrary() {
     for (let i = 0; i < myLibrary.length; i++) {
         const card = document.createElement('div')
         card.classList.add('card')
-        card.id = `${myLibrary.indexOf(myLibrary[i])}`
-        card.dataset.attribute = `${myLibrary.indexOf(myLibrary[i])}`
         container.appendChild(card)
         card.innerHTML = '<h4>Title:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].title}</p>` 
               + '<br>' + '<h4>Author:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].author}</p>`
@@ -156,7 +154,7 @@ function loopThroughLibrary() {
         const deleteBtn = document.createElement('button')
         removeBookBtnDiv.classList.add('remove-bookBtn-div')
         deleteBtn.classList.add('remove-book-btn')
-        deleteBtn.id = `${myLibrary.indexOf(myLibrary[i])}`
+        deleteBtn.dataset.attribute = `${myLibrary.indexOf(myLibrary[i])}`
         deleteBtn.textContent = 'Delete'
         removeBookBtnDiv.appendChild(deleteBtn)
         card.appendChild(removeBookBtnDiv)
