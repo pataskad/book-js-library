@@ -2,24 +2,22 @@
 
 let myLibrary = [
     {
-        id: 1,
         title: 'Harry Potter',
         author: 'J.K. Rowling',
-        pages: 560,
+        pages: 560 + 'pg.',
         hasRead: 'No',
     },
     {
-        id: 2,
         title: 'Game of Thrones',
         author: 'G.R.R Martin',
-        pages: 1002,
+        pages: 1002 + 'pg.',
         hasRead: 'No',
     },
-    {   id: 3,
+    {   
         title: 'Percy Jackson',
         author: 'Rick Riordan',
-        pages: 340,
-        hasRead: 'Yes',
+        pages: 340 + 'pg.',
+        hasRead: 'Yes'
     }
 ] // clear library object placeholders before submitting project code
 
@@ -39,6 +37,11 @@ document.addEventListener('click', (e) => {
     if (e.target.matches('#add-book-button')) {
         modal.style.display = 'block'
         main.classList.add('blur-background')
+    }
+})
+document.addEventListener('click', (e) => {
+    if (e.target.matches('.round-slider.rounded')) {
+        Book.prototype.hasReadToggle()
     }
 })
 document.addEventListener('mouseover', (e) => {
@@ -72,17 +75,24 @@ window.addEventListener('click', (e) => {
 function Book(title, author, pages, hasRead) { // book object constructor
     this.title = title
     this.author = author
-    this.pages = +(pages)
-    this.hasRead = hasRead;
+    this.pages = +(pages) + 'pg.'
+    this.hasRead = hasRead
 }
 
-/* Book.prototype.hasRead = function() {
-    if (hasRead === false) {
-        return 'No'
-    } else {
-        return 'Yes'
+Book.prototype.hasReadToggle = function() {
+    let toggleReadStatusBtn = document.querySelector('.toggle-read-status-btn input')
+    if (toggleReadStatusBtn.checked == true) {
+        myLibrary[0].hasRead = 'No' // need to find index dynamically
+        // updateObjectValues()
+        //loopThroughLibrary() // updates view but toggle doesn't slide once refreshed
+        console.log('no') // outputs correctly with toggle
+    } else if (toggleReadStatusBtn.checked == false) {
+        myLibrary[0].hasRead = 'Yes' // need to find index
+        //loopThroughLibrary() // updates view with changes but toggle doesn't slide
+        console.log('yes') // outputs correctly with toggle
     }
-} */
+    // return??
+}
 
 function addBookToLibrary(title, author, pages, hasRead) {
     if (validateFormInput() == true) {
@@ -139,6 +149,9 @@ function inputCancel() {
     removeBlurAndModal()
     clearFormInputs()
 }
+function updateObjectValues() {
+    // separate function liner to update read value and still slide toggle
+}
 function loopThroughLibrary() {
     clearDisplay()
     for (let i = 0; i < myLibrary.length; i++) {
@@ -151,11 +164,21 @@ function loopThroughLibrary() {
               + '<br>' + '<h4>Read:</h4>' + '<br>' + `<p class='card-values'>${myLibrary[i].hasRead}</p>`
         const removeBookBtnDiv = document.createElement('div')
         const deleteBtn = document.createElement('button')
+        const toggleReadLabel = document.createElement('label')
+        const toggleReadStatusBtn = document.createElement('input')
+        const sliderSpanToggle = document.createElement('span')
+        sliderSpanToggle.classList.add('round-slider')
+        sliderSpanToggle.classList.add('rounded')
         removeBookBtnDiv.classList.add('remove-bookBtn-div')
         deleteBtn.classList.add('remove-book-btn')
+        toggleReadStatusBtn.type = 'checkbox'
+        toggleReadLabel.classList.add('toggle-read-status-btn')
         deleteBtn.dataset.attribute = `${myLibrary.indexOf(myLibrary[i])}`
         deleteBtn.textContent = 'Delete'
+        toggleReadLabel.appendChild(toggleReadStatusBtn)
+        toggleReadLabel.appendChild(sliderSpanToggle)
         removeBookBtnDiv.appendChild(deleteBtn)
+        removeBookBtnDiv.appendChild(toggleReadLabel)
         card.appendChild(removeBookBtnDiv)
     } 
 }
