@@ -70,7 +70,6 @@ window.addEventListener('click', (e) => {
 })
 
 function Book(title, author, pages, hasRead) { // book object constructor
-    this.id = myLibrary.length + 1 // doesn't work properly when adding new books after deleting other books
     this.title = title
     this.author = author
     this.pages = +(pages)
