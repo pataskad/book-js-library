@@ -86,7 +86,7 @@ header > h1 {
     right: 0;
     bottom: 0;
     background-color: rgb(125, 3, 2);
-    transition: .8s;
+    transition: .5s;
 
 }
 .round-slider:before {
@@ -97,13 +97,10 @@ header > h1 {
     left: 5px;
     bottom: 3px;
     background-color: lightgray;
-    transition: .8s;
+    transition: .5s;
 }
 .toggle-read-status-btn input:checked + .round-slider {
     background-color: green;
-}
-.toggle-read-status-btn input:focus + .round-slider {
-    box-shadow: 0 0 1px green;
 }
 .toggle-read-status-btn input:checked + .round-slider:before {
     transform: translateX(25px);

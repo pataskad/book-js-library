@@ -41,7 +41,7 @@ document.addEventListener('click', (e) => {
 })
 document.addEventListener('click', (e) => {
     if (e.target.matches('.round-slider.rounded')) {
-        Book.prototype.hasReadToggle()
+        Book.prototype.hasReadToggle(e)
     }
 })
 document.addEventListener('mouseover', (e) => {
@@ -79,19 +79,16 @@ function Book(title, author, pages, hasRead) { // book object constructor
     this.hasRead = hasRead
 }
 
-Book.prototype.hasReadToggle = function() {
-    let toggleReadStatusBtn = document.querySelector('.toggle-read-status-btn input')
-    if (toggleReadStatusBtn.checked == true) {
-        myLibrary[0].hasRead = 'No' // need to find index dynamically
-        // updateObjectValues()
-        //loopThroughLibrary() // updates view but toggle doesn't slide once refreshed
-        console.log('no') // outputs correctly with toggle
-    } else if (toggleReadStatusBtn.checked == false) {
-        myLibrary[0].hasRead = 'Yes' // need to find index
-        //loopThroughLibrary() // updates view with changes but toggle doesn't slide
-        console.log('yes') // outputs correctly with toggle
+Book.prototype.hasReadToggle = function(e) {
+    let toggleReadStatusBtn = document.querySelectorAll('.toggle-read-status-btn input')
+    let toggleBtnIndex = e.target.dataset.attribute
+    if (toggleReadStatusBtn[toggleBtnIndex].checked == true) {
+        myLibrary[toggleBtnIndex].hasRead = 'No'
+        timedDelay()
+    } else if (toggleReadStatusBtn[toggleBtnIndex].checked == false) {
+        myLibrary[toggleBtnIndex].hasRead = 'Yes'
+        timedDelay()
     }
-    // return??
 }
 
 function addBookToLibrary(title, author, pages, hasRead) {
@@ -139,6 +136,9 @@ function removeBlurAndModal() {
     main.classList.remove('blur-background')
     modal.style.display = 'none'
 }
+function timedDelay() {
+    setTimeout(function(){loopThroughLibrary()}, 300)
+}
 function clearFormInputs() {
     bookTitleInput.value = ''
     bookAuthorInput.value = ''
@@ -148,9 +148,6 @@ function clearFormInputs() {
 function inputCancel() {
     removeBlurAndModal()
     clearFormInputs()
-}
-function updateObjectValues() {
-    // separate function liner to update read value and still slide toggle
 }
 function loopThroughLibrary() {
     clearDisplay()
@@ -172,9 +169,15 @@ function loopThroughLibrary() {
         removeBookBtnDiv.classList.add('remove-bookBtn-div')
         deleteBtn.classList.add('remove-book-btn')
         toggleReadStatusBtn.type = 'checkbox'
-        toggleReadLabel.classList.add('toggle-read-status-btn')
+        toggleReadLabel.classList.add('toggle-read-status-btn') 
         deleteBtn.dataset.attribute = `${myLibrary.indexOf(myLibrary[i])}`
+        sliderSpanToggle.dataset.attribute = `${myLibrary.indexOf(myLibrary[i])}`
         deleteBtn.textContent = 'Delete'
+        if (myLibrary[i].hasRead == true || myLibrary[i].hasRead == 'Yes') {
+            toggleReadStatusBtn.checked = true
+        } else (
+            toggleReadStatusBtn.checked = false
+        )
         toggleReadLabel.appendChild(toggleReadStatusBtn)
         toggleReadLabel.appendChild(sliderSpanToggle)
         removeBookBtnDiv.appendChild(deleteBtn)
