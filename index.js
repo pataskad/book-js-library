@@ -2,23 +2,11 @@
 
 let myLibrary = [
     {
-        title: 'Harry Potter',
-        author: 'J.K. Rowling',
-        pages: 560 + 'pg.',
+        title: 'Delete Me',
+        author: 'Delete Me',
+        pages: 123 + 'pg.',
         hasRead: 'No',
     },
-    {
-        title: 'Game of Thrones',
-        author: 'G.R.R Martin',
-        pages: 1002 + 'pg.',
-        hasRead: 'No',
-    },
-    {   
-        title: 'Percy Jackson',
-        author: 'Rick Riordan',
-        pages: 340 + 'pg.',
-        hasRead: 'Yes'
-    }
 ] // clear library object placeholders before submitting project code
 
 const container = document.querySelector('.container')
@@ -38,10 +26,17 @@ document.addEventListener('click', (e) => {
         modal.style.display = 'block'
         main.classList.add('blur-background')
     }
-})
-document.addEventListener('click', (e) => {
     if (e.target.matches('.round-slider.rounded')) {
         Book.prototype.hasReadToggle(e)
+    }
+    if (e.target.matches('.remove-book-btn')) {
+        deleteBook(e)
+    }
+    if (e.target.matches('#form-submit-btn')) {
+        addBookToLibrary()
+    }
+    if (e.target.matches('.close-button')) {
+        inputCancel()
     }
 })
 document.addEventListener('mouseover', (e) => {
@@ -49,21 +44,6 @@ document.addEventListener('mouseover', (e) => {
         addBookBtn.textContent = 'New'
     } else {
         addBookBtn.textContent = '+'
-    }
-})
-document.addEventListener('click', (e) => {
-    if (e.target.matches('.remove-book-btn')) {
-        deleteBook(e)
-    }
-})
-document.addEventListener('click', (e) => {
-    if (e.target.matches('#form-submit-btn')) {
-        addBookToLibrary()
-    }
-})
-document.addEventListener('click', (e) => {
-    if (e.target.matches('.close-button')) {
-        inputCancel()
     }
 })
 window.addEventListener('click', (e) => {
@@ -78,7 +58,6 @@ function Book(title, author, pages, hasRead) { // book object constructor
     this.pages = +(pages) + 'pg.'
     this.hasRead = hasRead
 }
-
 Book.prototype.hasReadToggle = function(e) {
     let toggleReadStatusBtn = document.querySelectorAll('.toggle-read-status-btn input')
     let toggleBtnIndex = e.target.dataset.attribute
@@ -90,7 +69,6 @@ Book.prototype.hasReadToggle = function(e) {
         timedDelay()
     }
 }
-
 function addBookToLibrary(title, author, pages, hasRead) {
     if (validateFormInput() == true) {
         title = bookTitleInput.value
@@ -164,6 +142,7 @@ function loopThroughLibrary() {
         const toggleReadLabel = document.createElement('label')
         const toggleReadStatusBtn = document.createElement('input')
         const sliderSpanToggle = document.createElement('span')
+
         sliderSpanToggle.classList.add('round-slider')
         sliderSpanToggle.classList.add('rounded')
         removeBookBtnDiv.classList.add('remove-bookBtn-div')
@@ -173,11 +152,13 @@ function loopThroughLibrary() {
         deleteBtn.dataset.attribute = `${myLibrary.indexOf(myLibrary[i])}`
         sliderSpanToggle.dataset.attribute = `${myLibrary.indexOf(myLibrary[i])}`
         deleteBtn.textContent = 'Delete'
+
         if (myLibrary[i].hasRead == true || myLibrary[i].hasRead == 'Yes') {
             toggleReadStatusBtn.checked = true
         } else (
             toggleReadStatusBtn.checked = false
         )
+        
         toggleReadLabel.appendChild(toggleReadStatusBtn)
         toggleReadLabel.appendChild(sliderSpanToggle)
         removeBookBtnDiv.appendChild(deleteBtn)

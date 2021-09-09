@@ -2,11 +2,11 @@
 
 [Live Demo](https://pataskad.github.io/book-js-library/)
 
-The 'JavaScript Library' is a project where the goal is to manage a library of books through the use of constructors, objects, and prototypes to allow for great efficiency in order to be able to scale this approach up to a professional level working with professional, business level applications.  This project will allow a user to browse through their current repository of books and add or remove books as desired.  Additionally, they will also be able to toggle the read status of each book.
+The 'JavaScript Library' is a project where the goal is to manage a library of books through the use of constructors, objects, and prototypes to allow for greater efficiency and performance in order to be able to scale this approach up to a professional level working with professional, business level applications.  This project will allow a user to browse through their current repository of books and add or remove books as desired.  Additionally, they will also be able to toggle the read status of each book on each created book 'card'.
 
 # Learning Outcomes #
 
-The goal of this project is to further extend my working knowledge and understanding of objects, prototypes, and how they come together to create more efficient solutions to JavaScript based applications.  In addition to implementing this library, this project will also serve as a starter template for including backend configuration via Node.js in the coming weeks. 
+The goal of this project is to further extend my working knowledge and understanding of objects, prototypes, and how they come together to create more efficient solutions to JavaScript based applications.  The primary technical goal of this project is to further my understanding of JavaScript objects and specifically object constructors while also making use of object prototypes for maximum performance to reduce excess processes as much as possible in order to avoid technical debt.
 
 # Based on 'The Odin Project' Curriculum #
 
