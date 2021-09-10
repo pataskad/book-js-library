@@ -2,12 +2,12 @@
 
 let myLibrary = [
     {
-        title: 'Delete Me',
+        title: 'Placeholder',
         author: 'Delete Me',
         pages: 123 + 'pg.',
         hasRead: 'No',
     },
-] // clear library object placeholders before submitting project code
+]
 
 const container = document.querySelector('.container')
 const main = document.querySelector('main')
