@@ -52,21 +52,23 @@ window.addEventListener('click', (e) => {
     }
 })
 
-function Book(title, author, pages, hasRead) { // book object constructor
-    this.title = title
-    this.author = author
-    this.pages = +(pages) + 'pg.'
-    this.hasRead = hasRead
-}
-Book.prototype.hasReadToggle = function(e) {
-    let toggleReadStatusBtn = document.querySelectorAll('.toggle-read-status-btn input')
-    let toggleBtnIndex = e.target.dataset.attribute
-    if (toggleReadStatusBtn[toggleBtnIndex].checked == true) {
-        myLibrary[toggleBtnIndex].hasRead = 'No'
-        timedDelay()
-    } else if (toggleReadStatusBtn[toggleBtnIndex].checked == false) {
-        myLibrary[toggleBtnIndex].hasRead = 'Yes'
-        timedDelay()
+class Book {
+    constructor(title, author, pages, hasRead) {
+        this.title = title
+        this.author = author
+        this.pages = +(pages) + 'pg.'
+        this.hasRead = hasRead
+    }
+    hasReadToggle(e) {
+        let toggleReadStatusBtn = document.querySelectorAll('.toggle-read-status-btn input')
+        let toggleBtnIndex = e.target.dataset.attribute
+        if (toggleReadStatusBtn[toggleBtnIndex].checked == true) {
+            myLibrary[toggleBtnIndex].hasRead = 'No'
+            timedDelay()
+        } else if (toggleReadStatusBtn[toggleBtnIndex].checked == false) {
+            myLibrary[toggleBtnIndex].hasRead = 'Yes'
+            timedDelay()
+        }
     }
 }
 function addBookToLibrary(title, author, pages, hasRead) {
