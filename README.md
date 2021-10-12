@@ -8,6 +8,8 @@ The 'JavaScript Library' is a project where the goal is to manage a library of b
 
 The goal of this project is to further extend my working knowledge and understanding of objects, prototypes, and how they come together to create more efficient solutions to JavaScript based applications.  The primary technical goal of this project is to further my understanding of JavaScript objects and specifically object constructors while also making use of object prototypes for maximum performance to reduce excess processes as much as possible in order to avoid technical debt.
 
+--Updated October 2021, this project has been converted from traditional plain object constructors using functions to the new 'class' functionality.  In my opinion, class simplifies the codebase and allows for easier reading and grouping of code to improve readability from not only myself, but other developers and interested parties alike.
+
 # Outlook # 
 
 After a short period of time spent away from this project and working on new projects I intend to come back and set up storage options along with a user authentication process to allow individual users to have their own account and save their book libraries without losing data.
